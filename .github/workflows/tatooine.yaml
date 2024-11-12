@@ -1,0 +1,28 @@
+name: Teste 1 - Planeta Tatooine
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Baixar repositório
+      uses: actions/checkout@v2
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Instalar dependências
+      run: npm install
+
+    - name: Executar teste Jest para Tatooine
+      run: npx jest -t 'Deve recuperar informações do planeta Tatooine'
